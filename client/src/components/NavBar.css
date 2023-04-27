@@ -1,0 +1,33 @@
+.searchbar {
+  width: 250px;
+  height: 40px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  border-radius: 18px;
+  border: solid #e6e6e6 2px;
+  justify-content: space-between;
+}
+.searchIcon {
+  font-size: 20px !important;
+  margin-right: 10px;
+}
+
+.searchInput {
+  border: none;
+  width: 85%;
+  margin-left: 11px;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+.serch-r{
+  display: flex;
+  width: 9%;
+  height: 100%;
+  align-items: center;
+  background-color: #F0F0F0;
+  border-radius: 0px 14px 14px 0px;
+}
