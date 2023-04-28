@@ -32,7 +32,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const redirect = '/products';
+  const redirect = '/productss';
   const toast = useToast();
   const boxBR = useColorModeValue('white', 'gray.700')
   const bgColor=useColorModeValue('gray.50', 'gray.800');

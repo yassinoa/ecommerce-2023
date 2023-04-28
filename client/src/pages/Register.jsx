@@ -36,7 +36,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const { loading, error, userInfo } = user;
-  const redirect = '/products';
+  const redirect = '/productss';
   const toast = useToast();
   const headingBR = useBreakpointValue({ base: 'xs', md: 'sm' });
   // const boxBR = useBreakpointValue({ base: 'transparent', md: 'bg-surface' });
