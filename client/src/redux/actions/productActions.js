@@ -1,5 +1,5 @@
 import axios from "axios"
-import {setProducts,setError,setLoading, setProduct} from "../slices/products"
+import {setProducts,setError,setLoading, setProduct, setFilterI, setFilterR, setFilterC} from "../slices/products"
 
 export const getProducts=()=> async(dispatch)=>{
   dispatch(setLoading(true))
@@ -37,3 +37,13 @@ export const getProduct=(id)=> async(dispatch)=>{
     )
   }
 }
+
+export const setFilterInp = (value) => async (dispatch) => {
+  dispatch(setFilterI(value));
+};
+export const setFilterRate = (value) => async (dispatch) => {
+  dispatch(setFilterR(value));
+};
+export const setFilterCat = (value) => async (dispatch) => {
+  dispatch(setFilterC(value));
+};

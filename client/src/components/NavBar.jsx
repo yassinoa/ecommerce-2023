@@ -18,9 +18,10 @@ import {
   MenuList,
   MenuItem,
   Input,
+  FormControl,
 } from '@chakra-ui/react';
 import './NavBar.css'
-import { Link as ReactLink } from 'react-router-dom';
+import { Link as ReactLink, useNavigate } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
 import { CgProfile } from 'react-icons/cg';
 import { MdLocalShipping, MdLogout, MdOutlineAdminPanelSettings } from 'react-icons/md'; 
@@ -28,10 +29,13 @@ import { FiShoppingCart } from 'react-icons/fi';
 // import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/actions/userActions';
+import { useRef } from 'react';
+import { setFilterInp } from '../redux/actions/productActions';
 
 
 const ShoppingCartIcon = () => {
   const cartInfo = useSelector((state) => state.cart);
+  
   const { cart } = cartInfo;
   return (
     <Flex>
@@ -49,7 +53,7 @@ const ShoppingCartIcon = () => {
 
 
 const links = [
-  { linkName: "Products", path: "/products" },
+  { linkName: "Products", path: "/productss" },
   { linkName: <ShoppingCartIcon />, path: "/cart" },
 ];
 
@@ -74,14 +78,26 @@ const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const user = useSelector((state) => state.user);
   const { userInfo } = user;
+  
+  const productList= useSelector((state)=>state.products)
+  const {filterinp}=productList
+  
   const dispatch = useDispatch();
   const toast = useToast();
-
+  // const inputsearch= useRef();
+  // + inputsearch.current.value
+  // const navigate = usenavigate
   const logoutHandler =() =>{
     dispatch(logout())
     toast({description:'You have been logged out',status:'success',isClosable:true})
   }
 
+
+  // const handleSub=(e)=>{
+  //   e.preventDefault();
+  // navigate('/products')
+  // console.log("nav")
+  // }
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} >
       {/* <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} style={{position:"fixed"}} w='100%'></Box> */}
@@ -110,11 +126,20 @@ const NavBar = () => {
             ))}
             
 
+                
+            <Box className='searchbar' size={'20px'} >
 
-            <Box className='searchbar' size={'20px'}>
-
-              <Input placeholder='search your product' size={0} className='searchInput' border={0} variant="unstyled" color={"gray.700"} />
-              <SearchIcon className='searchIcon' color={"gray.700"} /> 
+            
+            
+              <Input placeholder='search your product' size={0} className='searchInput' defaultValue={filterinp}   border={0} variant="unstyled" color={"gray.700"} 
+              onChange={(e) => {
+                dispatch(setFilterInp(e.target.value));
+              }}
+              />
+              <Button as={ReactLink} to={'/products/'+filterinp} colorScheme='transparent'><SearchIcon color={"gray.700"}  /> </Button>
+              
+              
+ 
             </Box>
           </HStack>
           

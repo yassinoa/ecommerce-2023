@@ -4,7 +4,11 @@ export const initialState={
   loading:false,
   error:null,
   products:[],
-  product:null
+  product:null,
+  filterinp:"",
+  filterrate:1,
+  catName:"all",
+  catId:""
 }
 
 export const productsSlice= createSlice({
@@ -28,11 +32,20 @@ export const productsSlice= createSlice({
     setError:(state,{payload})=>{
       state.error=payload;
       state.loading=false;
+    },
+    setFilterI: (state, { payload }) => {
+      state.filterinp = payload;
+    },
+    setFilterR: (state, { payload }) => {
+      state.filterrate = payload;
+    },
+    setFilterC: (state, { payload }) => {
+      state.catId = payload;
     }
   }
 })
 
-export const {setLoading,setError,setProducts,setProduct}=productsSlice.actions;
+export const {setLoading,setError,setProducts,setProduct,setFilterI,setFilterR,setFilterC}=productsSlice.actions;
 export default productsSlice.reducer;
 
 export const productsSelector=(state)=> state.products;
