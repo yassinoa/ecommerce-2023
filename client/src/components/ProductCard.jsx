@@ -112,7 +112,7 @@ const ProductCard = ({ product }) => {
             <Box as="span" color={'gray.600'} fontSize="lg" >
               DT
             </Box>
-            {(product.price-(product.price *product.promo/100)).toFixed(2)}
+            {/* {(product.price-(product.price *product.promo/100)).toFixed(2)} */}
             
           </Box>
           <Tooltip label="Add to cart" bg="white" placement="top" color="gray.800" fontSize="1.2em">
